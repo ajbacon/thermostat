@@ -59,4 +59,35 @@ describe("Thermostat", () => {
 
   });
 
+  describe(".reset", () => {
+    it("should reset the temperature to 20", () => {
+      thermostat.temperature = 24;
+      thermostat.reset();
+      expect(thermostat.temperature).toEqual(20);
+    });
+  });
+
+  describe(".energyUsage", () => {
+    it("should return 'low-usage' if the temperature is below 18 degrees", () => {
+      thermostat.temperature = 17;
+      expect(thermostat.energyUsage()).toEqual("low-usage");
+    });
+
+    it("should return medium usage if the temperature is 18.0 and 25.0 (not inclusive)", () => {
+      thermostat.temperature = 18;
+      expect(thermostat.energyUsage()).toEqual("medium-usage");
+    });
+
+    it("should return medium usage if the temperature is 18.0 and 25.0 (not inclusive)", () => {
+      thermostat.temperature = 24;
+      expect(thermostat.energyUsage()).toEqual("medium-usage");
+    });
+
+    it("should return high usage if the temperature is 25.0 or greater", () => {
+      thermostat.temperature = 25;
+      expect(thermostat.energyUsage()).toEqual("high-usage");
+    });
+
+  });
+
 });
