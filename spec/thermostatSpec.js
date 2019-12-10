@@ -22,6 +22,26 @@ describe("Thermostat", () => {
       expect(thermostat.temperature).toEqual(21);
     });
 
+    it("shouldn't increase above 25 degrees with power saving mode on", () => {
+      thermostat.temperature = 25;
+      thermostat.up(1);
+      expect(thermostat.temperature).toEqual(25);
+    });
+
+    it("should increase above 25 degrees without power saving mode on", () => {
+      thermostat.temperature = 25;
+      thermostat.togglePowerMode();
+      thermostat.up(1);
+      expect(thermostat.temperature).toEqual(26);
+    });
+
+    it("shouldn't increase above 32 degrees without power saving mode on", () => {
+      thermostat.temperature = 32;
+      thermostat.togglePowerMode();
+      thermostat.up(1);
+      expect(thermostat.temperature).toEqual(32);
+    });
+
   });
 
   describe(".down", function() {
