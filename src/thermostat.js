@@ -3,4 +3,12 @@ function Thermostat() {
   this.temperature = this.default_temperature;
 }
 
+Thermostat.prototype.up = function(amount) {
+  this.temperature += amount;
+}
+
+Thermostat.prototype.down = function(amount) {
+  this.temperature -= amount;
+}
+
 module.exports = Thermostat
