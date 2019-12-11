@@ -33,7 +33,7 @@ $(document).ready(function() {
     setDisplay();
   });
 
-  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=7dca333c2a0290c11d8c820868e8f829", function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=7dca333c2a0290c11d8c820868e8f829", function(data) {
     var items = [];
     // items.push("<li>" + data["list"][0]["weather"][0]["description"] + "</li>");
     items.push("<li>" + JSON.stringify(data) + "</li>");

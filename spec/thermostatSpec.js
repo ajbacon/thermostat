@@ -15,6 +15,7 @@ describe("Thermostat", () => {
     expect(thermostat.powerSavingMode).toBeTruthy();
   });
 
+
   describe(".up", function() {
 
     it("should increase the temperature by 1", function() {
@@ -65,6 +66,16 @@ describe("Thermostat", () => {
       thermostat.reset();
       expect(thermostat.temperature).toEqual(20);
     });
+  });
+
+  describe(".togglePowerMode", () => {
+    it("should reset the temperature to 25 if power mode is turned on when current temperature is > 25 degrees", () => {
+      thermostat.togglePowerMode()
+      thermostat.temperature = 32
+      thermostat.togglePowerMode()
+      expect(thermostat.temperature).toEqual(25);
+    });
+
   });
 
   describe(".energyUsage", () => {
