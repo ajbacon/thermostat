@@ -13,8 +13,8 @@ function setDisplay() {
 function postData() {
   $.ajax({
     type: 'POST',
-    url: 'http://localhost:4567/temperature',
-    data: {temp: thermostat.temperature},
+    url: '/temperature',
+    data: {temp: thermostat.temperature, psm: thermostat.powerSavingMode},
     dataType: 'json',
     success: function(data){
     },
@@ -28,11 +28,15 @@ $(document).ready(function() {
 
   $.ajax({
     type: 'GET',
-    url: 'http://localhost:4567/temperature',
+    url: '/temperature',
     success: function(response){
       obj = JSON.parse(response)
-      console.log(obj.temp);
-      thermostat.temperature = obj.temp
+      // console.log(obj.temp);
+      // console.log(obj.psm)
+      thermostat.temperature = obj.temp;
+      while (thermostat.powerSavingMode != JSON.parse(obj.psm)) {
+        thermostat.togglePowerMode()
+      }
       setDisplay();
 
     },
@@ -56,6 +60,7 @@ $(document).ready(function() {
   $("#psm-btn").click(function(event) {
     thermostat.togglePowerMode();
     setDisplay();
+    postData();
   });
 
   $("#reset-btn").click(function(event) {
@@ -63,7 +68,6 @@ $(document).ready(function() {
     setDisplay();
     postData();
   });
-
 
   $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=London&appid=7dca333c2a0290c11d8c820868e8f829", function(data) {
     var items = [];
