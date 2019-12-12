@@ -67,15 +67,7 @@ $(document).ready(function() {
 
   $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=London&appid=7dca333c2a0290c11d8c820868e8f829", function(data) {
     var items = [];
-
     $( '#temp' ).text("Weather (" + data.name + "): " + (data.main.temp - 273.15).toFixed(0) + "degC, " + data.weather[0].description) 
-
-    // items.push("<li>" + data["list"][0]["weather"][0]["description"] + "</li>");
-    // items.push("<li>" + JSON.stringify(data) + "</li>");
-
-    // $("<ul/>", {
-    //   html: items.join("")
-    // }).appendTo("body");
   });
 
 });
