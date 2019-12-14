@@ -3,7 +3,6 @@ require 'json'
 
 enable :sessions
 
-
 get '/' do
   session[:temp] ||= 20
   session[:psm] ||= "true"
@@ -11,11 +10,8 @@ get '/' do
 end
 
 post '/temperature' do
-  p params
   session[:temp] = params[:temp].to_i
   session[:psm] = params[:psm]
-  p session[:temp]
-  p session[:psm]
   JSON.dump(temp: session[:temp])
 end
 

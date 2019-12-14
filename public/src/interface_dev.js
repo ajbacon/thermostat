@@ -9,6 +9,11 @@ function setDisplay() {
   } else {
     $('#leaf2').css("visibility","hidden");
   }
+
+  // $("#psm-display").text(function() {
+  //   if(thermostat.powerSavingMode) return 'PSM On';
+  //   return 'PSM Off';
+  // });
 }
 
 function postData() {
@@ -27,49 +32,49 @@ function postData() {
 
 $(document).ready(function() {
 
-  $.ajax({
-    type: 'GET',
-    url: '/temperature',
-    success: function(response){
-      obj = JSON.parse(response)
-      // console.log(obj.temp);
-      // console.log(obj.psm)
-      thermostat.temperature = obj.temp;
-      while (thermostat.powerSavingMode != JSON.parse(obj.psm)) {
-        thermostat.togglePowerMode()
-      }
-      setDisplay();
+  // $.ajax({
+  //   type: 'GET',
+  //   url: '/temperature',
+  //   success: function(response){
+  //     obj = JSON.parse(response)
+  //     // console.log(obj.temp);
+  //     // console.log(obj.psm)
+  //     thermostat.temperature = obj.temp;
+  //     while (thermostat.powerSavingMode != JSON.parse(obj.psm)) {
+  //       thermostat.togglePowerMode()
+  //     }
+  //     setDisplay();
 
-    },
-    error: function(){
-      alert('Error');
-    }
-  });
+  //   },
+  //   error: function(){
+  //     alert('Error');
+  //   }
+  // });
 
   setDisplay()
 
   $("#up-btn").click(function(event) {
     thermostat.up(1);
     setDisplay();
-    postData();
+    // postData();
   });
 
   $("#down-btn").click(function(event) {
     thermostat.down(1);
     setDisplay();
-    postData();
+    // postData();
   });
 
   $("#psm-btn").click(function(event) {
     thermostat.togglePowerMode();
     setDisplay();
-    postData();
+    // postData();
   });
 
-  $("#temperature-display").click(function(event) {
+  $("#reset-btn").click(function(event) {
     thermostat.reset();
     setDisplay();
-    postData();
+    // postData();
   });
 
   $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=London&appid=7dca333c2a0290c11d8c820868e8f829", function(data) {

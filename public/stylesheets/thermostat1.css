@@ -1,0 +1,124 @@
+* {
+    /* border: red solid 1px; */
+    font-family: 'Lato', sans-serif;
+    margin: 0px;
+    padding: 0;
+}
+
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5vw;
+}
+
+#outer-diameter {
+    display: flex;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(#202020, #303030, #808080);
+}
+
+.inner-diameter {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background: #202020;
+}
+
+#temp-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+#down-btn {
+    display: flex;
+    padding-right: 3vw;
+}
+
+#up-btn {
+    display: flex;
+    padding-left: 3vw;
+}
+
+#weather-section {
+    display: flex;
+    height: 10vw; 
+    justify-content: center;
+    align-items: center;
+}
+
+#weather-section p {
+    color: white;
+    font-size: 1.2vw;
+}
+button:focus {outline:0;}
+
+#psm-section {
+    display: flex;
+    flex-direction: column;
+    height: 10vw; 
+    justify-content: center;
+    align-items: center;
+}
+
+#psm-btn {
+    font-size: 2vw;
+    background: transparent;
+    color: white;
+    border: none;
+}
+
+.noHover{
+    pointer-events: none;
+}
+
+
+.white {
+ color: white;
+}
+
+#chevron {
+    font-size: 7vw;
+    background: transparent;
+}
+
+.btn {
+    background: transparent;
+    border: none;
+}
+
+.change-size {
+    width: 5vw;
+    height: 5vw;
+    background: transparent;
+}
+
+
+
+#temperature-display {
+    display: flex;
+    font-size: 10vw;
+}
+
+.low-usage {
+    color: green;
+}
+
+.medium-usage {
+    color: white;
+}
+
+.high-usage {
+    color: red;
+}
